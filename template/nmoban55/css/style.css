@@ -886,7 +886,7 @@ header {
 }
 .slides img {
   width: 100%;
-  height: 670px;
+  height: auto;
 }
 .flex-container a:active,
 .flexslider a:active {
@@ -904,6 +904,7 @@ header {
   width: 100%;
   overflow: hidden;
   position: relative;
+  /* height: 640px; */
   zoom: 1;
 }
 .flexslider .slides > li {
