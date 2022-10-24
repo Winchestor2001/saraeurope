@@ -1,0 +1,155 @@
+{% load static %}
+{% load i18n %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+<header class="header-box">
+    <div class="header-absolute">
+        <div class="container menu_nav">
+            <div class="row align-items-center">
+                <div class="col-12 col-sm-10">
+                    <ul class="d-block d-md-flex gap-4 text-white">
+                        <li class="website-mailbox">
+                            <i class="iconfont">&#xe624;</i>
+                            <a class="text-white" href="mailto:info@saraeurope.uz">info@saraeurope.uz </a>
+                        </li>
+                        <li class="website-phone">
+                            <i class="iconfont">&#xec76;</i>
+                            <a class="text-white" href="tel:998993993818">+998 (99) 399 38 18</a>
+                        </li>
+                        <li class="website-phone">
+                            <i class="iconfont">&#xec76;</i>
+                            <a class="text-white" href="tel:998993293818">+998 (99) 329 38 18</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-2">
+                    <div class="langs">
+                        <form action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <select class="form-select" name="language">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                        <img src="{% static '2791/{{ language.code }}.png' %}" alt=""> {{ language.name_local | title }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <!-- <input type="submit" value="Go"> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container px-0">
+            <nav class="navbar navbar-expand-lg bg-light shadow">
+                <div class="container">
+                  <a class="navbar-brand logo11" href="#"><img alt="SARA EUROPE EXIM Inc."
+                    src="{% static '2791/logo.png' %}"></a>
+
+                    <p class="d-block d-lg-none mt-3">SARA EUROPE EXIM</p>
+                    <div class="brand_div">
+                        <a class="navbar-brand logo11 d-block d-lg-none" href="{% url 'home' %}"><img alt="SARA EUROPE EXIM Inc."
+                            src="{% static '2791/logo2.png' %}"></a>
+                            <button class="navbar-toggler toggle_btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                      </div>
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center fw-bold">
+                      <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">{% trans 'Home' %}</a>
+                      </li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">{% trans 'Products' %}</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">{% trans 'About Us' %}</a>
+                      </li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">{% trans 'Gallery' %}</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">{% trans 'Contact Us' %}</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <a class="navbar-brand logo11 d-none d-lg-block" href="{% url 'home' %}"><img alt="SARA EUROPE EXIM Inc."
+                    src="{% static '2791/logo2.png' %}"></a>
+                </div>
+            </nav>
+        </div>
+        
+
+
+        <!-- <div class="header-top">
+            <div class="header-inner">
+                <div class="header-contact fw-bold">
+                    <ul>
+                        <li class="website-mailbox">
+                            <i class="iconfont">&#xe624;</i>
+                            <a href="mailto:info@saraeurope.uz">info@saraeurope.uz </a>
+                        </li>
+                        <li class="website-phone">
+                            <i class="iconfont">&#xec76;</i>
+                            <a href="tel:998993993818">+998 (99) 399 38 18</a>
+                        </li>
+                        <li class="website-phone">
+                            <i class="iconfont">&#xec76;</i>
+                            <a href="tel:998993293818">+998 (99) 329 38 18</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="language">
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}">
+                        <select class="form-select" name="language">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                    <img src="{% static '2791/{{ language.code }}.png' %}" alt=""> {{ language.name_local | title }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Go">
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div> -->
+        <!-- <div class="header-middle" id="fixedMenu">
+            <div class="header-inner">
+                <div class="header-logo">
+                    <div class="header-logo-box">
+                        <a href="{% url 'home' %}"><img alt="SARA EUROPE EXIM Inc."
+                                src="{% static '2791/logo.png' %}"></a>
+                    </div>
+                    <span>SARA EUROPE EXIM</span>
+                </div>
+                <nav class="main-nav" role="navigation">
+                    <input id="main-menu-state" type="checkbox">
+                    <label class="main-menu-btn" for="main-menu-state">
+                        <span class="main-menu-btn-icon"></span> Toggle main menu visibility
+                    </label>
+   
+                    <ul id="main-menu" class="sm sm-blue">
+                        <li class=""><a href="{% url 'home' %}">{% trans 'Home' %}</a>
+                        </li>
+                        <li class=""><a href="{% url 'products' %}">{% trans 'Products' %}</a></li>
+                        <li class=""><a href="{% url 'about' %}">{% trans 'About Us' %}</a>
+                        </li>
+                        <li class=""><a href="{% url 'gallery' %}">{% trans 'Gallery' %}</a></li>
+                        <li class=""><a href="{% url 'contact' %}">{% trans 'Contact Us' %}</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="logo2">
+                    <div class="header-logo-box">
+                        <a href="{% url 'home' %}"><img alt="SARA EUROPE EXIM Inc."
+                                src="{% static '2791/logo.png' %}"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div> -->
+    </div>
+</header>

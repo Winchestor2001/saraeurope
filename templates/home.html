@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %} SARA EUROPE EXIM {% endblock %}
+
+
+{% block content %}
+<style>
+  .own_carousel{
+    width: 100%;
+  }
+</style>
+
+<div class="banner_sy">
+  <div class="flexslider">
+    <ul class="slides">
+      <li>
+        <img src="{% static '2791/fon1.jpg' %}" alt="首页切换大图1" />
+      </li>
+      <li>
+        <img src="{% static '2791/fon2.jpg' %}" alt="首页切换大图1" />
+      </li>
+      <li>
+        <img src="{% static '2791/fon3.jpg' %}" alt="首页切换大图1" />
+      </li>
+      <li>
+        <img src="{% static '2791/fon4.jpg' %}" alt="首页切换大图1" />
+      </li>
+      <li>
+        <img src="{% static '2791/fon5.jpg' %}" alt="首页切换大图1" />
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="own_carousel py-4">
+  <div class="container carus owl-carousel">
+    {% for product in products %}
+    <div class="card_block">
+      <a class="nav-link fw-bold" href="{% url 'product_detail' product.pk %}"><img src="/media/{{product.img}}" alt="" /> {{ product.title }}</a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+  $(".carus").owlCarousel({
+    margin: 10,
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    responsive: {
+      0:{
+        items: 1,
+        nav: false
+      },
+      600:{
+        items: 3,
+        nav: false
+      },
+      1000:{
+        items: 6,
+        nav: false
+      }
+    }
+  })
+</script>
+{% endblock %}

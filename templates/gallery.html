@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} Gallery {% endblock %} 
+
+
+{% block content %}
+
+<div class="container1">
+    <h1>Gallery</h1>
+    <div class="image-container">
+        <div class="image"><img src="{% static '/2791/fon1.jpg' %}" alt=""></div>
+        <div class="image"><img src="{% static '/2791/fon2.jpg' %}" alt=""></div>
+        <div class="image"><img src="{% static '/2791/fon3.jpg' %}" alt=""></div>
+        <div class="image"><img src="{% static '/2791/fon4.jpg' %}" alt=""></div>
+        <div class="image"><img src="{% static '/2791/fon5.jpg' %}" alt=""></div>
+    </div>
+    <div class="popup-image">
+        <span>&times;</span>
+        <img src="" alt="">
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.image-container img').forEach(image => {
+        image.onclick = () => {
+            document.querySelector('.popup-image').style.display = 'block';
+            document.querySelector('.popup-image img').src = image.getAttribute('src');
+        };
+    });
+    document.querySelector('.popup-image span').onclick = () => {
+        document.querySelector('.popup-image').style.display = 'none';
+    }
+</script>
+{% endblock %}

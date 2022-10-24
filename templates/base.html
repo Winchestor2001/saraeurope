@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}  {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static '2791/logo.png' %}">
+    <!--样式图标-->
+    <link rel="stylesheet" type="text/css" href="{% static 'template/iconfont/iconfont.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'template/nmoban55/css/galery.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'template/nmoban55/css/contact.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'template/nmoban55/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+    <script src="{% static 'template/nmoban55/js/jquery-1.12.3.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+</head>
+<body>
+    {% include 'includes/preloader.html' %}
+    <div class="main">
+        {% include 'includes/navbar.html' %}
+        
+        {% block content %}
+
+        {% endblock %}
+
+        {% include 'includes/footer.html' %}
+     
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery-validate/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/fancybox3/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'template/nmoban55/js/custom.js' %}"></script>
+    <script type="text/javascript" src='https://estat6.waimaoniu.com/js.php?id=2791'></script>
+    <script type="text/javascript" src="{% static 'assets/js/common_functions.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/custom_functions.js?t=10' %}"></script>
+    <script src="{% static 'template/nmoban55/js/jquery.flexslider-min.js' %}"></script>
+    <script type="text/javascript">
+        $('.flexslider').flexslider();
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            initSideFloatingMenu(true)
+        })
+    </script>
+    <script src="{% static 'template/nmoban55/js/jquery.smartmenus.js' %}"></script>
+<!-- SmartMenus jQuery init -->
+<script>
+    // SmartMenus init
+    $(function () {
+        $('#main-menu').smartmenus({
+            subMenusSubOffsetX: 1,
+            subMenusSubOffsetY: -8
+        });
+    });
+
+    // SmartMenus mobile menu toggle button
+    $(function () {
+        var $mainMenuState = $('#main-menu-state');
+        if ($mainMenuState.length) {
+            // animate mobile menu
+            $mainMenuState.change(function (e) {
+                var $menu = $('#main-menu');
+                if (this.checked) {
+                    $menu.hide().slideDown(250, function () { $menu.css('display', ''); });
+                } else {
+                    $menu.show().slideUp(250, function () { $menu.css('display', ''); });
+                }
+            });
+            // hide mobile menu beforeunload
+            $(window).bind('beforeunload unload', function () {
+                if ($mainMenuState[0].checked) {
+                    $mainMenuState[0].click();
+                }
+            });
+        }
+    });
+</script>
+<!--导航栏置顶固定-->
+<script>
+    $(function () {
+        var ie6 = document.all;
+        var dv = $('#fixedMenu'),
+            st;
+        dv.attr('otop', dv.offset().top); //存储原来的距离顶部的距离
+        $(window).scroll(function () {
+            st = Math.max(document.body.scrollTop || document.documentElement.scrollTop);
+            if (st > parseInt(dv.attr('otop'))) {
+                if (ie6) { //IE6不支持fixed属性，所以只能靠设置position为absolute和top实现此效果
+                    dv.css({
+                        position: 'absolute',
+                        top: st
+                    });
+                } else if (dv.css('position') != 'fixed') dv.css({
+                    'position': 'fixed',
+                    top: 0
+                });
+                dv.addClass("top-fixed")
+            } else if (dv.css('position') != 'static') {
+                dv.css({
+                    'position': 'static'
+                });
+                dv.removeClass("top-fixed")
+            }
+        });
+    });
+</script>
+<script>
+    window.onload = () => {
+    let loader = document.querySelector("#preloader");
+     loader.style.opacity = 0;
+     loader.style.visibility = "hidden";
+  };
+</script>
+<script>
+    let lang = document.querySelector('.langs select');
+    let lang_form = document.querySelector('.langs form');
+    lang.addEventListener('change', () => {
+        // console.log(lang_form);
+        lang_form.submit();
+    });
+</script>
+</body>
+</html>
