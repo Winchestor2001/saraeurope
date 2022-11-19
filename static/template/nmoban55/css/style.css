@@ -910,13 +910,22 @@ header {
   background-color: #fff;
 }
 .slides {
+  width: 100%;
   text-align: center;
   overflow: hidden;
   display: block;
+  /* border: 3px solid red; */
+  background-size: cover;
+  background-position: bottom !important;
+  height: auto;
+
 }
 
 .slides img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+
   height: auto;
 }
 .flex-container a:active,
@@ -936,7 +945,6 @@ header {
   overflow: hidden;
   position: relative;
   height: 900px;
-  zoom: 1;
 }
 .flexslider .slides > li {
   display: none;

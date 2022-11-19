@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-24 15:09+0500\n"
+"POT-Creation-Date: 2022-11-09 19:06+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1293,6 +1293,11 @@ msgstr ""
 msgid "None"
 msgstr ""
 
+#: .\templates\about.html:12 .\templates\includes\navbar.html:66
+#: .\templates\includes\navbar.html:138
+msgid "About Us"
+msgstr "O nama"
+
 #: .\templates\includes\footer.html:9
 msgid "FE LLC “SARA EUROPE EXIM”"
 msgstr ""
@@ -1313,10 +1318,6 @@ msgstr "Dom"
 #: .\templates\includes\navbar.html:65 .\templates\includes\navbar.html:137
 msgid "Products"
 msgstr "Proizvodi"
-
-#: .\templates\includes\navbar.html:66 .\templates\includes\navbar.html:138
-msgid "About Us"
-msgstr "O nama"
 
 #: .\templates\includes\navbar.html:68 .\templates\includes\navbar.html:140
 msgid "Gallery"

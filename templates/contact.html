@@ -1,28 +1,29 @@
 {% extends 'base.html' %} 
 
 {% load static %} 
+{% load i18n %}
 
 
-{% block title %} Contact Us {% endblock %} 
+{% block title %} {% trans 'Contact Us' %} {% endblock %} 
 
 
 {% block content %}
 
 <div class="contact_form">
     <section class="get-in-touch">
-        <h1 class="title">Contact Us</h1>
+        <h1 class="title">{% trans 'Contact Us' %}</h1>
         <form class="contact-form row1" method="post">
             {% csrf_token %}
             <div class="form-field1 col1 x-50">
-                <input id="name" class="input-text js-input" type="text" required>
+                <input id="name" class="input-text js-input" name="name" type="text" required>
                 <label class="label" for="name">Name</label>
             </div>
             <div class="form-field1 col1 x-50">
-                <input id="email" class="input-text js-input" type="email" required>
+                <input id="email" class="input-text js-input" name="email" type="email" required>
                 <label class="label" for="email">E-mail</label>
             </div>
             <div class="form-field1 col1 x-100">
-                <input id="message" class="input-text js-input" type="text" required>
+                <input id="message" class="input-text js-input" name="message" type="text" required>
                 <label class="label" for="message">Message</label>
             </div>
             <div class="form-field1 col1 x-100 align-center">

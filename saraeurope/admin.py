@@ -2,19 +2,7 @@ from dataclasses import field
 from django.contrib import admin
 from django import forms
 from modeltranslation.admin import TranslationAdmin
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from .models import *
-
-
-# class ArticleAdminForm(forms.ModelForm):
-#     context_en = forms.CharField(widget=CKEditorUploadingWidget())
-#     context_bs = forms.CharField(widget=CKEditorUploadingWidget())
-#     context_ru = forms.CharField(widget=CKEditorUploadingWidget())
-#     context_deuch = forms.CharField(widget=CKEditorUploadingWidget())
-
-#     class Meta:
-#         model = Article
-#         fields = '__all__'
 
 class PhotoAdmin(admin.StackedInline):
     model = ProductImage
@@ -31,3 +19,30 @@ class ProductsAdmin(TranslationAdmin):
 @admin.register(ProductImage)
 class ProductImageAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(Pictures)
+class PicturesAdmin(admin.ModelAdmin):
+    list_display = ['action']
+
+
+@admin.register(AboutUs)
+class AboutUsAdmin(TranslationAdmin):
+    class Meta:
+        model = Products
+
+
+@admin.register(Category)
+class CategoryAdmin(TranslationAdmin):
+    class Meta:
+        model = Category
+
+
+@admin.register(Ip)
+class IpAdmin(admin.ModelAdmin):
+    list_display = ['ip', 'country']
+
+
+
+
+

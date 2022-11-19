@@ -1,24 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 
-{% block title %} About us {% endblock %} 
+{% block title %} {% trans 'About Us' %} {% endblock %} 
 
 
 {% block content %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
 <div class="section">
     <div class="container p-3">
-        <h1 class="text-center">About Us</h1>
-        <div class="about_context mt-4">
+        <h1 class="text-center">{% trans 'About Us' %}</h1>
+        <div class="about_context">
             <div class="about_left_context">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis porro dicta dolores nostrum ducimus error! Ea perspiciatis ipsa consequatur, sed harum delectus numquam, quia commodi voluptas aliquid hic! Vitae officia, perspiciatis nihil a accusantium debitis totam voluptatibus nostrum quae error at repellendus, cupiditate sunt nisi. Suscipit commodi sint maiores quod, quas architecto cum natus fuga, iure necessitatibus voluptates unde recusandae, vero ex eligendi? Voluptatum, dolorum ratione? Fugit obcaecati, architecto suscipit non necessitatibus, minima nisi laboriosam officiis cupiditate omnis nemo, ad ducimus delectus! Aliquam odit distinctio quo dolor officiis, recusandae dolore culpa! Pariatur, quisquam maxime earum aliquam quo autem dolorum explicabo est commodi adipisci eligendi vero laboriosam, excepturi esse numquam nostrum iusto consequuntur, similique perspiciatis ad minima veritatis? Fugit, dolorum? Ab omnis, beatae architecto voluptates dignissimos, odio, totam dolorem iure voluptatem ullam quo. Consectetur quidem reprehenderit, aspernatur amet nam corrupti ipsa quibusdam, minima nobis, eligendi vel nulla dolore! Aspernatur, velit assumenda!</p>
+                <div>
+                    {{ about.context | safe }}
+                </div>
             </div>
             <div class="about_right_context">
                 <img src="{% static '/2791/logo.png' %}" alt="">
             </div>
         </div>
-        <div class="photo_card mt-5">
+        <div class="photo_card">
             <div class="pic">
                 <img src="{% static '/2791/fon4.jpg' %}" alt="">
             </div>

@@ -128,5 +128,20 @@
         lang_form.submit();
     });
 </script>
+
+<script>
+    function filterHandler(e){
+        let selected = e.getAttribute('data-filter-front');
+        let product = document.querySelectorAll('.product');
+        product.forEach((item) => {
+            let prod = item.getAttribute('data-filter-back');
+            if (selected == prod || selected === 'All'){
+                item.style.display = 'block';  
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    } 
+</script>
 </body>
 </html>

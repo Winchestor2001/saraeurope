@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 
-{% block title %} Products {% endblock %} 
+{% block title %} {% trans 'Products' %} {% endblock %} 
 
 
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'template/nmoban55/css/products.css' %}">
 <div class="container1">
-    <h3 class="title"> products </h3>
- 
+    <h3 class="title"> {% trans 'Products' %} </h3>
+
+    <div class="filter_bar d-flex justify-content-start mb-4">
+      <a onclick="filterHandler(this);" class="btn btn-primary me-3" href="#" data-filter-front="All">{% trans 'All' %}</a>
+      {% for category in categories %}
+      <a onclick="filterHandler(this);" class="btn btn-primary me-3" href="#" data-filter-front="{{ category.category }}">{{ category.category }}</a>
+      {% endfor %}
+   </div>
     <div class="products-container">
-      
       {% for product in products %}
-       <div class="product" data-name="p-1">
-          <a href="{% url 'product_detail' product.pk %}"><img src="/media/{{product.img}}" alt=""></a>
+       <div class="product" data-name="p-1" data-filter-back="{{ product.filter }}">
+          <a href="{% url 'product_detail' product.pk %}"><img class="img-fluid" src="/media/{{product.img}}" alt=""></a>
           <h3>{{ product.title }}</h3>
        </div>
       {% endfor %}
