@@ -4,8 +4,10 @@ from django import forms
 from modeltranslation.admin import TranslationAdmin
 from .models import *
 
+
 class PhotoAdmin(admin.StackedInline):
     model = ProductImage
+
 
 @admin.register(Products)
 class ProductsAdmin(TranslationAdmin):
@@ -41,8 +43,3 @@ class CategoryAdmin(TranslationAdmin):
 @admin.register(Ip)
 class IpAdmin(admin.ModelAdmin):
     list_display = ['ip', 'country']
-
-
-
-
-

@@ -5,17 +5,14 @@ from django.core.mail import send_mail
 import requests
 
 
-
-
-
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
         ip = x_forwarded_for.split(',')[0]
     else:
-        ip = request.META.get('REMOTE_ADDR') # В REMOTE_ADDR значение айпи пользователя
-    
-    response = requests.get(f'https://geolocation-db.com/json/84.54.66.170&position=true')
+        ip = request.META.get('REMOTE_ADDR')  # В REMOTE_ADDR значение айпи пользователя
+
+    response = requests.get(f'https://geolocation-db.com/json/{ip}&position=true')
     ip_data = response.json()
     Ip.objects.create(ip=ip, country=ip_data['country_name'])
 

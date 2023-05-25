@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4_&ri&usev)5bjy2s=l$1b8vfksd&@jcs-gmb)+cjxu1a7zj=^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['saraeurope.uz', 'www.saraeurope.uz']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cleanup',
 
     'saraeurope',
     'ckeditor',
@@ -221,11 +222,10 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'saraeurope222@gmail.com'
-EMAIL_HOST_PASSWORD = 'avjvkuifrghboipl1'
+EMAIL_HOST_PASSWORD = 'avjvkuifrghboipl'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 

@@ -72,5 +72,9 @@ class Ip(models.Model):
     ip = models.CharField(max_length=100)
     country = models.CharField(max_length=255)
 
-def __str__(self):
-    return '{} - {}'.format(self.ip, self.country)
+    def __str__(self):
+        return '{} - {}'.format(self.ip, self.country)
+
+    class Meta:
+        verbose_name = 'Human'
+        verbose_name_plural = 'Humans'
